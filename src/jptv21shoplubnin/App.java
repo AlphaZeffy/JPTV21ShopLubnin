@@ -7,6 +7,7 @@ package jptv21shoplubnin;
 
 import Entity.Client;
 import Entity.Product;
+import Manager.clientmanager;
 import Manager.productmanager;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,11 +21,14 @@ public class App {
     private Product[] product;
     private final productmanager productManager;
     private final clientmanager clientManager;
+    
     public App(){
     this.product = new Product[0];
     this.client = new Client[0];
+    
     productManager = new productmanager();
-    clientManager = new clientManager();
+    clientManager = new clientmanager();
+    
     }
     
     public void run(){
@@ -56,14 +60,17 @@ public class App {
                     this.product[this.product.length-1] = productmanager.addproduct();
                     break;
                 case 2:
-                    System.out.println("zada4a 2. pisok knig");
+                    System.out.println("zada4a 2. spisok produktov");
                     productManager.printListProduct(product);
+                    break;
                 case 3: 
-                    System.out.println("Задача 2. Добавить читателя");
-                    this.readers = 
-                            Arrays.copyOf(this.readers, this.readers.length+1);
-                    this.readers[this.readers.length-1] = readerManager.createReader();
+                    System.out.println("zada4a 3. dobavitj 4itatelja");
+                    this.client =  Arrays.copyOf(this.client, this.client.length+1);
+                    this.client[this.client.length-1] = clientManager.addClient();
                     break;  
+                case 4:
+                    System.out.println("zada4a 4. spiusok zaregestrirovannix poljzovatelei");
+                    clientManager.printListClients(client);
             }
         System.out.println("=======---------========");
         }while(repeat);  

@@ -20,7 +20,18 @@ public class clientmanager {
         client.setFirstname(scanner.nextLine());
         System.out.println("Surname");
         client.setLastname(scanner.nextLine());
+        System.out.println("cash");
+        client.setCash(scanner.nextLine());
         return client;
+    }  
+    public void printListClients(Client[] client) {
+        for (int i = 0; i < client.length; i++) {
+            Client c = client[i];
+            System.out.printf(i+1+".%s %s %s%n"
+                    ,c.getFirstname()
+                    ,c.getLastname()
+                    ,c.getCash()
+            );
+        }
     }
-    
 }
