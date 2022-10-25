@@ -12,17 +12,11 @@ package Entity;
 public class Client {
     private String firstname;
     private String lastname;
-    private String cash;
+    private int cash;
     
     public Client() {
     }
 
-    public Client(String firstname, String lastname, String cash){
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.cash = cash;
-   
-    }
     public String getFirstname() {
         return firstname;
     }
@@ -39,11 +33,11 @@ public class Client {
         this.lastname = lastname;
     }
 
-    public String getCash() {
+    public int getCash() {
         return cash;
     }
 
-    public void setCash(String cash) {
+    public void setCash(int cash) {
         this.cash = cash;
     }
 

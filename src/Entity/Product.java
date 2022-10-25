@@ -12,7 +12,7 @@ package Entity;
 public class Product {
     private String productName;
     private String quantity;
-    private String price;
+    private int price;
     
     public Product() {
 
@@ -34,11 +34,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

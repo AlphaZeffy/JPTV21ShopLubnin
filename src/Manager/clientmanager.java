@@ -21,9 +21,10 @@ public class clientmanager {
         System.out.println("Surname");
         client.setLastname(scanner.nextLine());
         System.out.println("cash");
-        client.setCash(scanner.nextLine());
+        client.setCash(scanner.nextInt());scanner.nextLine();
         return client;
-    }  
+    }
+
     public void printListClients(Client[] client) {
         for (int i = 0; i < client.length; i++) {
             Client c = client[i];

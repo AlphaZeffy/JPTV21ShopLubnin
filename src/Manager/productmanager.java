@@ -21,14 +21,18 @@ public class productmanager {
         Product product = new Product();
         System.out.println(" vvedite nazvanie produkta");
         product.setProductName(scanner.nextLine());
+        System.out.println(" vvedite tsenu za product");
+        product.setPrice(scanner.nextInt());scanner.nextLine();
+        System.out.println(" vvedite koli4estvo tovara");
+        product.setPrice(scanner.nextInt());scanner.nextLine();
         return product;
     }
     public void printListProduct(Product[] product){
         for (int i = 0; i < product.length; i++) {
             Product pr  = product[i];
-            System.out.printf(i+1+".  %s%n",pr.getProductName());
-
+            System.out.printf(i+1+".  %s%n",pr.getProductName() +" - "+ pr.getPrice());
         }
 
     }
+    
 }

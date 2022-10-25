@@ -64,13 +64,47 @@ public class App {
                     productManager.printListProduct(product);
                     break;
                 case 3: 
-                    System.out.println("zada4a 3. dobavitj 4itatelja");
+                    System.out.println("zada4a 3. dobavitj pokupetelja");
                     this.client =  Arrays.copyOf(this.client, this.client.length+1);
                     this.client[this.client.length-1] = clientManager.addClient();
                     break;  
                 case 4:
                     System.out.println("zada4a 4. spiusok zaregestrirovannix poljzovatelei");
                     clientManager.printListClients(client);
+                    break;
+                case 5: 
+                    System.out.println("zada4a 5. pokupka pokupatelem producta");
+                    System.out.println("spisok pokupatelej: ");
+                    for(int i = 0; i < client.length; i++){
+                        System.out.println(i+1);
+                    }
+                    int buy1 = scanner.nextInt();
+                    System.out.println("spisok productov: ");
+                    for(int j = 0; j< product.length; j++){
+                        System.out.println(j+1);
+                    }
+                    int buy2 = scanner.nextInt();
+                    int pur = client[buy1-1].getCash() - product[buy2-1].getPrice();
+                    client[buy1-1].setCash(pur);
+                    
+                    break;
+                case 6:
+                    System.out.println("zada4a 6. doxod magazina za vse vremja");
+
+                    break;
+                case 7:
+                    System.out.println("zada4a 7.dobavitj denjag pokupatelju");
+                    System.out.println("viberite pokupatelja dlja pereda4i deneg");
+                    System.out.println(" spisok pokupatelej");
+                    for(int i = 0; i< client.length; i++){
+                        System.out.println(i+1);
+                    }
+                    int turn = scanner.nextInt();
+                    System.out.println("skoljko deneg?");
+                    int addMoney = scanner.nextInt();
+                    int TotalMoney = client[turn -1].getCash()+ addMoney;
+                   client[turn -1].setCash(TotalMoney);
+                    break;
             }
         System.out.println("=======---------========");
         }while(repeat);  
