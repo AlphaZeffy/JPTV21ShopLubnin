@@ -17,14 +17,14 @@ import java.util.Scanner;
  * @author pupil
  */
 public class App {
-    private Client[] client;
+    private Client[] clients;
     private Product[] product;
     private final productmanager productManager;
     private final clientmanager clientManager;
     
     public App(){
     this.product = new Product[0];
-    this.client = new Client[0];
+    this.clients = new Client[0];
     
     productManager = new productmanager();
     clientManager = new clientmanager();
@@ -65,18 +65,23 @@ public class App {
                     break;
                 case 3: 
                     System.out.println("zada4a 3. dobavitj pokupetelja");
-                    this.client =  Arrays.copyOf(this.client, this.client.length+1);
-                    this.client[this.client.length-1] = clientManager.addClient();
+                    this.clients =  Arrays.copyOf(this.clients, this.clients.length+1);
+                    this.clients[this.clients.length-1] = clientManager.addClient();
                     break;  
                 case 4:
                     System.out.println("zada4a 4. spiusok zaregestrirovannix poljzovatelei");
-                    clientManager.printListClients(client);
+                    clientManager.printListClients(clients);
                     break;
                 case 5: 
                     System.out.println("zada4a 5. pokupka pokupatelem producta");
                     System.out.println("spisok pokupatelej: ");
-                    for(int i = 0; i < client.length; i++){
-                        System.out.println(i+1);
+                    for(int i = 0; i < clients.length; i++){
+                        System.out.printf("%d %s %s. money: %s %n",
+                                i+1
+                                ,clients[i].getFirstname()
+                                ,clients[i].getLastname()
+                                ,clients[i].getCash()
+                        );
                     }
                     int buy1 = scanner.nextInt();
                     System.out.println("spisok productov: ");
@@ -84,8 +89,8 @@ public class App {
                         System.out.println(j+1);
                     }
                     int buy2 = scanner.nextInt();
-                    int pur = client[buy1-1].getCash() - product[buy2-1].getPrice();
-                    client[buy1-1].setCash(pur);
+                    int pur = clients[buy1-1].getCash() - product[buy2-1].getPrice();
+                    clients[buy1-1].setCash(pur);
                     
                     break;
                 case 6:
@@ -96,14 +101,19 @@ public class App {
                     System.out.println("zada4a 7.dobavitj denjag pokupatelju");
                     System.out.println("viberite pokupatelja dlja pereda4i deneg");
                     System.out.println(" spisok pokupatelej");
-                    for(int i = 0; i< client.length; i++){
-                        System.out.println(i+1);
+                    for(int i = 0; i < clients.length; i++){
+                        System.out.printf("%d %s %s. money: %s %n",
+                                i+1
+                                ,clients[i].getFirstname()
+                                ,clients[i].getLastname()
+                                ,clients[i].getCash()
+                        );
                     }
                     int turn = scanner.nextInt();
                     System.out.println("skoljko deneg?");
                     int addMoney = scanner.nextInt();
-                    int TotalMoney = client[turn -1].getCash()+ addMoney;
-                   client[turn -1].setCash(TotalMoney);
+                    int TotalMoney = clients[turn -1].getCash()+ addMoney;
+                   clients[turn -1].setCash(TotalMoney);
                     break;
             }
         System.out.println("=======---------========");

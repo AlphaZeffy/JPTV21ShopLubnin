@@ -5,10 +5,10 @@ package Entity;
  *
  * @author Admin
  */
-public class History {
-    private String Purchase;
+public class Purchase {
+    private Purchase;
 
-    public History() {
+    public Purchase() {
     }
 
     public String getPurchase() {
