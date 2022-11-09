@@ -11,9 +11,9 @@ package Entity;
  */
 public class Product {
     private String productName;
-    private String quantity;
+    private int quantity;
     private int price;
-    
+ 
     public Product() {
 
     }
@@ -26,11 +26,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -44,13 +44,19 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Products{" + "productname=" 
-                + productName + ", quantity="
-                + quantity + ", price=" 
-                + price 
+        return "Products{" 
+                + "productname="+ productName
+                + ", quantity=" + quantity 
+                + ", price="  + price 
                 + '}';
     }
     
-
+    public boolean quantityMinuss(int quantity){
+        if(this.quantity>=quantity){
+            this.quantity=this.quantity-quantity;
+            return true;
+        }
+        return false;
+    }
     
 }

@@ -7,8 +7,10 @@ package jptv21shoplubnin;
 
 import Entity.Client;
 import Entity.Product;
-import Manager.clientmanager;
+import Entity.Purchase;
+import Manager.ClientManager;
 import Manager.productmanager;
+import Manager.purchasemanager;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -19,17 +21,20 @@ import java.util.Scanner;
 public class App {
     private Client[] clients;
     private Product[] product;
+    private Purchase[] purchase;
     private final productmanager productManager;
-    private final clientmanager clientManager;
+    private final ClientManager clientManager;
+    private final purchasemanager purchaseManager;
     
     public App(){
     this.product = new Product[0];
     this.clients = new Client[0];
-    
+    this.purchase = new Purchase[0];
     productManager = new productmanager();
-    clientManager = new clientmanager();
-    
+    clientManager = new ClientManager();
+    purchaseManager = new purchasemanager();
     }
+    
     
     public void run(){
         boolean repeat = true; 
@@ -61,7 +66,7 @@ public class App {
                     break;
                 case 2:
                     System.out.println("zada4a 2. spisok produktov");
-                    productManager.printListProduct(product);
+                    productManager.printListProducts(product);
                     break;
                 case 3: 
                     System.out.println("zada4a 3. dobavitj pokupetelja");
@@ -74,28 +79,29 @@ public class App {
                     break;
                 case 5: 
                     System.out.println("zada4a 5. pokupka pokupatelem producta");
-                    System.out.println("spisok pokupatelej: ");
-                    for(int i = 0; i < clients.length; i++){
-                        System.out.printf("%d %s %s. money: %s %n",
-                                i+1
-                                ,clients[i].getFirstname()
-                                ,clients[i].getLastname()
-                                ,clients[i].getCash()
-                        );
-                    }
-                    int buy1 = scanner.nextInt();
-                    System.out.println("spisok productov: ");
-                    for(int j = 0; j< product.length; j++){
-                        System.out.println(j+1);
-                    }
-                    int buy2 = scanner.nextInt();
-                    int pur = clients[buy1-1].getCash() - product[buy2-1].getPrice();
-                    clients[buy1-1].setCash(pur);
-                    
+//                    System.out.println("spisok pokupatelej: ");
+//                    for(int i = 0; i < clients.length; i++){
+//                        System.out.printf("%d %s %s. money: %s %n",
+//                                i+1
+//                                ,clients[i].getFirstname()
+//                                ,clients[i].getLastname()
+//                                ,clients[i].getCash()
+//                        );
+//                    }
+//                    int buy1 = scanner.nextInt();
+//                    System.out.println("spisok productov: ");
+//                    for(int j = 0; j< product.length; j++){
+//                        System.out.println(j+1);
+//                    }
+//                    int buy2 = scanner.nextInt();
+//                    int pur = clients[buy1-1].getCash() - product[buy2-1].getPrice();
+//                    clients[buy1-1].setCash(pur);
+                    this.purchase = Arrays.copyOf(this.purchase,this.purchase.length+1);
+                    this.purchase[this.purchase.length-1]=purchaseManager.buyProduct(product,clients);
                     break;
                 case 6:
                     System.out.println("zada4a 6. doxod magazina za vse vremja");
-
+                  
                     break;
                 case 7:
                     System.out.println("zada4a 7.dobavitj denjag pokupatelju");

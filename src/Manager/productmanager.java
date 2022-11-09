@@ -24,12 +24,12 @@ public class productmanager {
         System.out.println(" vvedite tsenu za product");
         product.setPrice(scanner.nextInt());scanner.nextLine();
         System.out.println(" vvedite koli4estvo tovara");
-        product.setQuantity(scanner.nextLine());
+        product.setQuantity(scanner.nextInt());scanner.nextLine();
         return product;
     }
-    public void printListProduct(Product[] product){
-        for (int i = 0; i < product.length; i++) {
-            Product pr  = product[i];
+    public void printListProducts(Product[] products){
+        for (int i = 0; i < products.length; i++) {
+            Product pr  = products[i];
             System.out.printf(i+1+".  %s%n",pr.getProductName() +" - "+ pr.getPrice() +"| Quantity: "+pr.getQuantity() );
         }
 

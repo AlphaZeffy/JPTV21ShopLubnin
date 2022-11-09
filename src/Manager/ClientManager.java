@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author pupil
  */
-public class clientmanager {
+public class ClientManager {
     private final Scanner scanner = new Scanner(System.in);
     public Client addClient(){
         Client client = new Client();
