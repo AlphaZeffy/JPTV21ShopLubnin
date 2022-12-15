@@ -10,7 +10,7 @@ import Entity.Product;
 import Entity.Purchase;
 import Manager.ClientManager;
 import Manager.productmanager;
-import Manager.purchasemanager;
+import Manager.PurchaseManager;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -20,19 +20,19 @@ import java.util.Scanner;
  */
 public class App {
     private Client[] clients;
-    private Product[] product;
-    private Purchase[] purchase;
+    private Product[] products;
+    private Purchase[] purchases;
     private final productmanager productManager;
     private final ClientManager clientManager;
-    private final purchasemanager purchaseManager;
+    private final PurchaseManager purchaseManager;
     
     public App(){
-    this.product = new Product[0];
+    this.products = new Product[0];
     this.clients = new Client[0];
-    this.purchase = new Purchase[0];
+    this.purchases = new Purchase[0];
     productManager = new productmanager();
     clientManager = new ClientManager();
-    purchaseManager = new purchasemanager();
+    purchaseManager = new PurchaseManager();
     }
     
     
@@ -61,12 +61,12 @@ public class App {
                 case 1: 
                     productmanager productmanager = new  productmanager();
                     System.out.println("zada4a 1. dobavitj product");
-                    this.product = Arrays.copyOf(this.product, this.product.length+1);
-                    this.product[this.product.length-1] = productmanager.addproduct();
+                    this.products = Arrays.copyOf(this.products, this.products.length+1);
+                    this.products[this.products.length-1] = productmanager.addproduct();
                     break;
                 case 2:
                     System.out.println("zada4a 2. spisok produktov");
-                    productManager.printListProducts(product);
+                    productManager.printListProducts(products);
                     break;
                 case 3: 
                     System.out.println("zada4a 3. dobavitj pokupetelja");
@@ -79,29 +79,14 @@ public class App {
                     break;
                 case 5: 
                     System.out.println("zada4a 5. pokupka pokupatelem producta");
-//                    System.out.println("spisok pokupatelej: ");
-//                    for(int i = 0; i < clients.length; i++){
-//                        System.out.printf("%d %s %s. money: %s %n",
-//                                i+1
-//                                ,clients[i].getFirstname()
-//                                ,clients[i].getLastname()
-//                                ,clients[i].getCash()
-//                        );
-//                    }
-//                    int buy1 = scanner.nextInt();
-//                    System.out.println("spisok productov: ");
-//                    for(int j = 0; j< product.length; j++){
-//                        System.out.println(j+1);
-//                    }
-//                    int buy2 = scanner.nextInt();
-//                    int pur = clients[buy1-1].getCash() - product[buy2-1].getPrice();
-//                    clients[buy1-1].setCash(pur);
-                    this.purchase = Arrays.copyOf(this.purchase,this.purchase.length+1);
-                    this.purchase[this.purchase.length-1]=purchaseManager.buyProduct(product,clients);
+
+                    this.purchases = Arrays.copyOf(this.purchases,this.purchases.length+1);
+                    this.purchases[this.purchases.length-1]=purchaseManager.buyProduct(products,clients);
                     break;
                 case 6:
                     System.out.println("zada4a 6. doxod magazina za vse vremja");
-                  
+                    purchaseManager.printProfit(purchases);
+                    
                     break;
                 case 7:
                     System.out.println("zada4a 7.dobavitj denjag pokupatelju");
